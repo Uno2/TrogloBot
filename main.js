@@ -72,6 +72,8 @@ const lyricist = new lrcst(process.env.GENIUS_TOKEN);
 
 let chosenOnes = JSON.parse(fs.readFileSync("data/chosenOnes.json"));
 let rainelle = JSON.parse(fs.readFileSync("data/rainelle.json"));
+let thedefault1 = JSON.parse(fs.readFileSync("data/thedefault1.json"));
+let rose = JSON.parse(fs.readFileSync("data/rose.json"));
 
 let allYoMamaJokes = JSON.parse(fs.readFileSync("data/joe-mama.json"));
 let quotes = JSON.parse(fs.readFileSync("data/quotes.json"));
@@ -198,7 +200,7 @@ ch.onMessageReceived = async function(channel, message) {
 				}
 				break;
 			case "rules":
-				sendMsgWithChannel(channel, isUndefined(rules[channel.url]) ? "The moderators haven't set any rules yet in ChatPlaceBot." : `The rules for ${channel.name} are:\n${rules[channel.url]}`);
+				sendMsgWithChannel(channel, isUndefined(rules[channel.url]) ? "The moderators haven't set any rules yet for TrogloBot" : `The rules for ${channel.name} are:\n${rules[channel.url]}`);
 				break;
 			case "setrules":
 				let opQueryToTestIfSenderIsMod = channel.createOperatorListQuery();
@@ -238,6 +240,22 @@ ch.onMessageReceived = async function(channel, message) {
 					sendMsgWithChannel(channel, "It is raining.");
 				} else {
 					sendMsgWithChannel(channel, `u/rainelle95 cast a rain cloud over ${stringFromList(args)}!`);
+				}
+				break
+			case "kill":
+				if (!thedefault1.includes(message._sender.nickname.toLowerCase())) {
+					sendMsgWithChannel(channel, `${message._sender.nickname}, that's impolite`);
+				} else if (isUndefined(args[0])) {
+					sendMsgWithChannel(channel, "You need to specify the victim.");
+				} else {
+					sendMsgWithChannel(channel, `${message._sender.nickname} killed ${stringFromList(args)}!`);
+				}
+				
+			case "wither":
+				if (!rose.includes(message._sender.nickname.toLowerCase())) {
+					sendMsgWithChannel(channel, "You don't have access to this command.");
+				} else {
+					sendMsgWithChannel(channel, "Rose is withering");
 				}
 				break
 			case "wyr":
@@ -283,7 +301,7 @@ ch.onMessageReceived = async function(channel, message) {
 				operatorListQuery.next(function(mods) {
 					for (let mod of mods) {
 						if (mod.userId == sb.currentUser.userId) {
-							msg = msg + "\n- ChatPlaceBot (This means that moderator commands are possible)";
+							msg = msg + "\n- TrogloBot";
 						} else {
 							msg = msg + "\n- " + mod.nickname;
 						}
@@ -404,7 +422,7 @@ ch.onMessageReceived = async function(channel, message) {
 											channel.banUserWithUserId(userToBan, parseInt(parseFloat(args[1]) * multiplier), reasonForBan, function(response, error) {
 												if (error) {
 													console.warn(error);
-													sendMsgWithChannel(channel, "Oh gosh. An error occured. Please notify u/aWildGeodudeAppeared of this");
+													sendMsgWithChannel(channel, "An error occured. Please notify u/TheDefault1 of this");
 													return;
 												}
 												sendMsgWithChannel(channel, args[0] + " has been sent to the gulag for " + parseFloat(args[1]) + args[2] + ".");
