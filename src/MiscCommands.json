@@ -1,27 +1,52 @@
 {
- "8ball": ["It is certain.","It is decidedly so.","Without a doubt","Yes - definitely","You may rely on it.","As I see it, yes.","Most likely.","Outlook good.","Yes.","Signs point to yes.","Reply hazy, try again.","Ask again later.","Better not tell you now.","Cannot predict now.","Concentrate and ask again.",
-   "Don't count on it.","My reply is no.","My sources say no.","Outlook not so good.","Very doubtful."],
- "secret": ["%(SENDER), you're a curious one. This command isn't even in the /help index but you still found it."],
- "smack": ["OOHHHH DAMN, %(SENDER) smacked %(ALLARGS)!"],
+
  "rd": ["Gayest dude in this chat"],
  "echo": ["%(ALLARGS)"],
- "coffee": ["%(SENDER) sipped a cup of hot coffee"],
+ "coffee": ["*%(SENDER) sipped a cup of hot coffee*"],
  "makenewb": ["%(ALLARGS) is now a noob"],
- "slap": ["%(SENDER) slapped %(ALLARGS) hard!"],
- "vodka": ["%(SENDER) grabbed a bottle of vodka."],
+ "slap": ["*%(SENDER) slapped %(ALLARGS) hard!*"],
+ "vodka": ["*%(SENDER) grabbed a bottle of vodka.*"],
+ "beer": ["*%(SENDER) grabbed a bottle of beer*"],
  "status": ["Online!"],
  "yes": ["yes"],
  "prank": ["u/%(SENDER) has left the chat."],
  "yeet": ["%(SENDER) yote %(ALLARGS)!"],
- "fuckyou": ["https://ibb.co/pQsg3kG"],
+ "fyou": ["https://ibb.co/pQsg3kG"],
  "hornyjail": ["%(SENDER) sent %(ALLARGS) to the horny jail!"],
+ "github": ["Here's my GitHub https://github.com/TheDefault1/TrogloBot"],
+ "siski": ["SISKIIIIIIIIIIIIIIIIIIIIIIIIII"],
+ "gn": ["https://ibb.co/6H847Lx"],
+ "slav": ["https://ibb.co/SxgPb96", "https://ibb.co/HPDq9jt", "https://ibb.co/kGTZ2NG", "https://ibb.co/jkpt2mN", "https://ibb.co/5sq4Dpq", "https://ibb.co/hKLpQbW", "https://ibb.co/bQrMMkc", "https://ibb.co/5BpVCZ2", "https://ibb.co/WcPW2fT"],
+ "kermitsuislide": ["Weeeeee, u/%(SENDER) does the toaster bath swim!"],
+ "whothefuckasked": ["Searching your homework folder to find out who the fuck asked"],
+ "snowball": ["Ouch! u/%(SENDER) threw a snowball at %(ALLARGS)!"],
+ "": ["...?", "I'm listening.", "Yes?", "Go on..."],
+ "ziq": ["Gayest dude in the chat (Only second to senpai default)"],
+ "rip": ["RIP, %(ALLARGS)"],
+ "drone": ["u/%(SENDER) has sent an MQ-1 Predator drone to %(ALLARGS)'s house"],
+ "airstrike": ["u/%(SENDER) has called an airstrike on %(ALLARGS). Two Northrop YB-49 heavy bombers are heading their way."],
+ "artillery": ["u/%(SENDER) has called a ranged artillery attack on %(ALLARGS). An M270 MLRS mobile self-propelled rocket launcher is on the way."],
+ "nuke": ["u/%(SENDER) has called a nuclear airstrike on %(ALLARGS). An M65 atomic cannon is loading 280mm nuclear bomb shells."],
+ "orbitalstrike": ["u/%(SENDER) has called an orbital strike on %(ALLARGS). A classified military satellite is sending kinetic bombs on them."],
+ "weebs": ["Ew! u/%(SENDER) has caught weebs! They are %(ALLARGS)!"],
+ "exterminate": ["https://ibb.co/7kwsfHD"],
+ 
+ 
+ 
+ 
+ 
+    
+    
+ "8ball": ["It is certain.","It is decidedly so.","Without a doubt","Yes - definitely","You may rely on it.","As I see it, yes.","Most likely.","Outlook good.","Yes.","Signs point to yes.","Reply hazy, try again.","Ask again later.","Better not tell you now.","Cannot predict now.","Concentrate and ask again.",
+   "Don't count on it.","My reply is no.","My sources say no.","Outlook not so good.","Very doubtful."],
+ "secret": ["%(SENDER), you're a curious one. This command isn't even in the /help index but you still found it."],
+ "smack": ["OOHHHH DAMN, %(SENDER) smacked %(ALLARGS)!"],
  "high5": ["%(SENDER) HAS THE BEST HIGH 5 EVER WITH %(ALLARGS)"],
  "love": ["%(SENDER) gives a big ol' packet of love to %(ALLARGS)"],
  "give": ["%(SENDER) has given %(ARG1) %(ARG3)x %(ARG2)."],
- "zoinks": ["Shaggy had to use a complete amount of 2.34 percent of power in order to destroy %(ALLARGS)"],
+ "zoink": ["%(SENDER) had to use a complete amount of 2.34 percent of power in order to destroy %(ALLARGS)"],
  "vibin": ["Bro, I'm literally just vibing."],
  "fbi": ["FBI! OPEN UP MOTHERFUCKER!"],
- "kill": ["%(SENDER), that's impolite."],
  "cricket": ["*chirp* *chirp* Wow atleast the crickets thought it was funny!"],
  "stab": ["%(SENDER) just stabbed %(ALLARGS)! That's kinda anti-vibes ngl."],
  "sneeze": ["%(SENDER) just sneezed all over everyone! Ewww!"],
@@ -56,7 +81,7 @@
  "challenge": ["%(SENDER) challenges %(ALLARGS) to a duel!"],
  "quickscope": ["%(SENDER) QUICKSCOPED %(ALLARGS).THIS MEANS WAR!!"],
  "roast": ["%(SENDER) Roasted the fuck outta %(ALLARGS).Kinda burnt now ngl."],
- "prottec": ["%(SENDER) Proteccs %(ALLARGS) with all their might!"],
+ "protecc": ["%(SENDER) Proteccs %(ALLARGS) with all their might!"],
  "attacc": ["%(SENDER) Attaccs %(ALLARGS) with all their might!"],
  "commie": ["FOR MOTHER RUSSIAAAAAAAAAAAAAAAAAAAAAA!!!!!"],
  "punch": ["%(SENDER) Punched %(ALLARGS)! SQUARE UP!"],
@@ -86,5 +111,5 @@
  "nice": ["Nice."],
  "whatislove": ["BABY DON' HURT ME,DON' HURT ME,NO MO'!"],
  "topic": ["baseball","camels","mules","cocoa","nurses","money","masonry","hockey","toads","balloons","barbers","pork","fortune tellers","diamond","lighters","police","apes","Native Americans","magicians","pipes","crime","water skiing","earthquake","foxes","dolphins","army","whales","smoking","zebras","Napoleon","Disney movies","cheese","gold","goats","Europe","pigeons","death","bakeries","oil","books","typewriters","breweries","sports","banking","medicine","bridges","seesaws","rice","newspapers","Americans","boats","seashells","athletics","pineapple","pottery","fishing","snakes","shells","socialism","coffee","chess","circus","postcards","typewriter","gypsies","shoes","rhinoceros","telephone","astronomy","frogs","journalism","zeppelins","crocodiles","dance","mummies","Olympic games","Boy Scouts","giants","elephants","motherhood","Africa","South America","cats","muppets","lighthouses","World War 1","hammocks","Red Cross","Salvation Army","marionettes","mountaineering","potatoes","rabbits","cows","windmills","tigers","amusement parks","milk","parachuting","bears","insects","cobblers","ostriches","laundry","sheep","submarines","beekeeping","caves","ferry boats","lions","carousels","cotton","motorcycles","bats","dogs","bohemians","criminals","accordions","pharmacy","cycling","justice","spiritism","shipping","birds","spinning","radio","sugar","radiology","bananas","coal","pipe organs","pilots","firemen","archery","vanilla","banana","meteorology","agriculture","prisons","stadiums","sharks","airports","jewelry","Central America","execution","playing cards","fencing","cactus","engineering","disasters","rugby","cigarettes","railroads","weaving","communism","politics","volcanoes","hotels","donkeys","drugstores","shovels","Asia","tanning","skull","skating","music","wrestling","basketball","gorillas","boxing","sailing","clowns","murderers","swings","canoes","cricket","gymnastics","tattoos","carpentry","diving","vaccines","salt","flood","hurricanes","printing","coffin","matches","x-rays","farmers markets","vegetables","puppets","monkeys","coins","shipwrecks","cards","movie theaters","artists","volleyball","funerals","pigs"],
- "rules":["Here are the official rules of Chatplace\n\nRules Of Chatplace:\n. No spamming forms of text, emojis, posts, or links\n. Keep it SFW\n. No political talk\n. No religious talk\n. No racist remarks\n. Democracy\n- Any user not following the rules and has been warned before will go through a voting process in chat, in which the users themselves can vote to keep or ban the user.\n\n**if you witness any user not following these rules or is harassing you in chat don’t be afraid to talk to u/Activision-Leaker about it**"]
+ "rules":["rules"]
 }
