@@ -149,6 +149,99 @@ ch.onMessageReceived = async function(channel, message) {
 	if (messageText.toLowerCase().includes("@all")) {
 		sendMsgWithChannel(channel, madAtAllTagging[Math.floor(Math.random() * madAtAllTagging.length)]);
 	}
+	if (messageText.toLowerCase().includes("fucking bot")) {
+		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
+	}
+	if (messageText.toLowerCase().includes("fucking troglo")) {
+		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
+	}
+	if (messageText.toLowerCase().includes("stupid bot")) {
+		sendMsgWithChannel(channel, "no u.")
+	}
+	if (messageText.toLowerCase().includes("stupid troglo")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("gey bot")) {
+		sendMsgWithChannel(channel, "you're even more gey")
+	}
+	if (messageText.toLowerCase().includes("gay bot")) {
+		sendMsgWithChannel(channel, "you're even more gey")
+	}
+	if (messageText.toLowerCase().includes("bot gey")) {
+		sendMsgWithChannel(channel, "you're even more gey")
+	}
+	if (messageText.toLowerCase().includes("bot gay")) {
+		sendMsgWithChannel(channel, "you're even more gay")
+	}
+	if (messageText.toLowerCase().includes("shitty bot")) {
+		sendMsgWithChannel(channel, "u even shittier")
+	}
+	if (messageText.toLowerCase().includes("shitty troglo ")) {
+		sendMsgWithChannel(channel, "u even shittier")
+	}
+	if (messageText.toLowerCase().includes("fucking bot ")) {
+		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
+	}
+	if (messageText.toLowerCase().includes("fucking troglo")) {
+		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
+	}
+	if (messageText.toLowerCase().includes("dumbass bot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("bot is shit")) {
+		sendMsgWithChannel(channel, "u even shittier")
+	}
+	if (messageText.toLowerCase().includes("bot is a shitbag")) {
+		sendMsgWithChannel(channel, "human meat is gay bacon. fuck you.")
+	}
+	if (messageText.toLowerCase().includes("shitbag bot")) {
+		sendMsgWithChannel(channel, "human meat is gay bacon. fuck you.")
+	}
+	if (messageText.toLowerCase().includes("bad bot")) {
+		sendMsgWithChannel(channel, "cryface")
+	}
+	if (messageText.toLowerCase().includes("not good bot")) {
+		sendMsgWithChannel(channel, "cryface")
+	}
+	if (messageText.toLowerCase().includes("goodn't bot")) {
+		sendMsgWithChannel(channel, "cryface")
+	}
+	if (messageText.toLowerCase().includes("asshole bot")) {
+		sendMsgWithChannel(channel, "i'm trying my best!")
+	}
+	if (messageText.toLowerCase().includes("retarded bot")) {
+		sendMsgWithChannel(channel, "noooo")
+	}
+	if (messageText.toLowerCase().includes("retard bot")) {
+		sendMsgWithChannel(channel, "noooo")
+	}
+
+	if (messageText.toLowerCase().includes("good bot")) {
+		sendMsgWithChannel(channel, "thanks!")
+	}
+	if (messageText.toLowerCase().includes("shit bot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("crap bot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("scumbag bot")) {
+		sendMsgWithChannel(channel, "noooo")
+	}
+	if (messageText.toLowerCase().includes("bot is retarded")) {
+		sendMsgWithChannel(channel, "noooo")
+	}
+
+	if (messageText.toLowerCase().includes("cool bot")) {
+		sendMsgWithChannel(channel, "thanks!")
+	}
+	if (messageText.toLowerCase().includes("bot is cool")) {
+		sendMsgWithChannel(channel, "thanks!")
+	}
+	if (messageText.toLowerCase().includes("bot is good")) {
+		sendMsgWithChannel(channel, "thanks!")
+	}
+
 	if (messageText.startsWith("/")) {
 		let cleanMessageText = messageText.toLowerCase().slice(1).trim();
 		let args = messageText.split(" ").slice(1);
@@ -223,7 +316,7 @@ ch.onMessageReceived = async function(channel, message) {
 				} else {
 					sendMsgWithChannel(channel, `${message._sender.nickname} shat on ${stringFromList(args)}!`);
 				}
-				break
+				break;
 			case "makegay":
 				if (!chosenOnes.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You're not allowed to use this command.");
@@ -232,7 +325,7 @@ ch.onMessageReceived = async function(channel, message) {
 				} else {
 					sendMsgWithChannel(channel, `${stringFromList(args)}is now gay. Wait no, ${stringFromList(args)} was always gay!`);
 				}
-				break
+				break;
 			case "rain":
 				if (!rainelle.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You're not allowed to use this command.");
@@ -241,7 +334,7 @@ ch.onMessageReceived = async function(channel, message) {
 				} else {
 					sendMsgWithChannel(channel, `u/rainelle95 cast a rain cloud over ${stringFromList(args)}!`);
 				}
-				break
+				break;
 			case "kill":
 				if (!thedefault1.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, `${message._sender.nickname}, that's impolite`);
@@ -250,14 +343,43 @@ ch.onMessageReceived = async function(channel, message) {
 				} else {
 					sendMsgWithChannel(channel, `${message._sender.nickname} killed ${stringFromList(args)}!`);
 				}
-				
+				break;
 			case "wither":
 				if (!rose.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You don't have access to this command.");
 				} else {
 					sendMsgWithChannel(channel, "Rose is withering");
 				}
-				break
+				break;
+			
+			case "id":
+				if (!isUndefined(args[0])) {
+					if (args[0].toLowerCase().startsWith("@")) {
+						args[0] = args[0].slice(1);
+					} else if (args[0].toLowerCase().startsWith("u/")) {
+						args[0] = args[0].slice(2);
+					}
+					var userToGet = args[0];
+					axios.get(`https://www.reddit.com/user/${userToGet}/about.json`).then((result) => {
+						sendMsgWithChannel(channel, isUndefined(result.data.error) ? `${userToGet}'s ID is: \n${result.data.data.id.split("?")[0]}` : `This isn't a real person!`);
+					});
+				} else {
+					sendMsgWithChannel(channel, `Your ID is: ${message._sender.userId}`)
+				}
+				break;
+			case "mal":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+}
+					var userToGet = args;
+					var malObject = `https://myanimelist.net/search/all?q=${userToGet}`
+					malReplaced = malObject.replace(/,/g, "%20");
+					sendMsgWithChannel(channel, `${malReplaced}`)
+					};
+				
+				
+				break;
 			case "wyr":
 				sendMsgWithChannel(channel, await wouldYouRather());
 				break;
@@ -310,7 +432,7 @@ ch.onMessageReceived = async function(channel, message) {
 				});
 				break;
 			case "emergencyruncode":
-				if (message._sender.userId == "t2_1asu2r2u" || message._sender.userId == "t2_5pkh5ol0") { //if it's aWildGeodudeAppeared or ChatPlaceBot itself
+				if (message._sender.userId == "t2_45pfv0q3" || message._sender.userId == "t2_5pkh5ol0") { //if it's aWildGeodudeAppeared or ChatPlaceBot itself
 					(new Function(["sb", "channel", "sendMsgWithChannel", "message"], stringFromList(args)))(sb, channel, sendMsgWithChannel, message)
 				}
 				break;
@@ -502,7 +624,7 @@ ch.onMessageReceived = async function(channel, message) {
 				sendMsgWithChannel(channel, allYoMamaJokes[Math.floor(Math.random() * allYoMamaJokes.length)]);
 				break;
 			case "botinfo":
-				sendMsgWithChannel(channel, "A bot forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL + version);
+				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL + version);
 				break;
 			case "commands":
 			case "help":
@@ -657,17 +779,17 @@ ch.onMessageReceived = async function(channel, message) {
 				sendMsgWithChannel(channel, message._sender.nickname.toUpperCase() + " CATCHED " + currentTrustfaller[channel.url].name.toUpperCase() + "! Thank god!");
 				currentTrustfaller[channel.url].catched = true;
 				break;
-			case "dissect":
+			case "man":
 				if (isUndefined(args[0])) {
-					sendMsgWithChannel(channel, "You have to specify a command to dissect!")
+					sendMsgWithChannel(channel, "null")
 				} else {
-					if (args[0].startsWith("/")) {
-						args[0] = args[0].slice(1);
-					}
+					// if (args[0].startsWith("/") ||( "$")) {
+					// 	args[0] = args[0].slice(1);
+					// }
 					if (!isUndefined(miscCommands[args[0]])) {
 						sendMsgWithChannel(channel, args[0] + " works like this: " + os.EOL + "\"" + miscCommands[args[0].toLowerCase()] + "\"");
 					} else {
-						sendMsgWithChannel(channel, "This command doesn't seem to have a definition. Keep in mind that spicy commands do not work with the dissect command.");
+						sendMsgWithChannel(channel, "This command doesn't seem to have a definition.");
 					}
 				}
 				break;
