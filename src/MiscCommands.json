@@ -1,6 +1,5 @@
 {
 
- "rd": ["Gayest dude in this chat"],
  "echo": ["%(ALLARGS)"],
  "coffee": ["*%(SENDER) sipped a cup of hot coffee*"],
  "makenewb": ["%(ALLARGS) is now a noob"],
