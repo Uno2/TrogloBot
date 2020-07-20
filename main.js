@@ -3,7 +3,7 @@ const sendbird = require('sendbird');
 const os = require('os');
 const fs = require('fs');
 const axios = require('axios');
-const version = "version 1.0a";
+const version = "version 1.1a";
 const moderators = ["TrogloBot", "TheDefault1"];
 const lrcst = require("lyricist")
 const FormData = require("form-data");
@@ -450,7 +450,7 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "restart":
 				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
-					sendMsgWithChannel(channel, "Restarting...");
+					sendMsgWithChannel(channel, "Restarting...\n pid: " + process.pid);
 					console.log("This is pid " + process.pid);
 					setTimeout(function () {
     					process.on("exit", function () {
@@ -722,7 +722,8 @@ ch.onMessageReceived = async function(channel, message) {
 				sendMsgWithChannel(channel, allYoMamaJokes[Math.floor(Math.random() * allYoMamaJokes.length)]);
 				break;
 			case "botinfo":
-				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL + version);
+				var uptime = Math.floor(process.uptime());
+				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL + `\n sysinfo: ` +  version + ` | arch: ${process.arch} | pid: ${process.pid} | uptime: ${uptime}s`);
 				break;
 			case "commands":
 			case "help":

@@ -30,8 +30,8 @@
  "orbitalstrike": ["u/%(SENDER) has called an orbital strike on %(ALLARGS). A classified military satellite is sending kinetic bombs on them."],
  "weebs": ["Ew! u/%(SENDER) has caught weebs! They are %(ALLARGS)!"],
  "exterminate": ["https://ibb.co/7kwsfHD"],
- "Chatsmoke": ["Poof! u/%(SENDER)vanished into thin air!"],
- "chatsmoke": ["Poof! u/%(SENDER)vanished into thin air!"],
+ "Chatsmoke": ["Poof! u/%(SENDER) vanished into thin air!"],
+ "chatsmoke": ["Poof! u/%(SENDER) vanished into thin air!"],
  
     
     
