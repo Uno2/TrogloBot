@@ -314,7 +314,7 @@ ch.onMessageReceived = async function(channel, message) {
 					catPath = `${stringFromList(args)}`
 					catPathFormatted = catPath.replace(/\s/g, '');
 					catPathCleaned = catPathFormatted.replace('..','safe');
-					readFileAsync(`/Users/tdo/Desktop/TrogloBot-master/${catPathCleaned}`, {encoding: 'utf8'})
+					readFileAsync(`${__dirname}/${catPathCleaned}`, {encoding: 'utf8'})
 					.then(contents => {
 					const obj = JSON.parse(contents);
 					objFormatted = JSON.stringify(obj);
@@ -334,7 +334,7 @@ ch.onMessageReceived = async function(channel, message) {
 					pcatPath = `${stringFromList(args)}`
 					pcatPathFormatted = pcatPath.replace(/\s/g, '');
 					pcatPathCleaned = pcatPathFormatted.replace('..','safe');
-					readFileAsync(`/Users/tdo/Desktop/TrogloBot-master/${pcatPathCleaned}`, {encoding: 'utf8'})
+					readFileAsync(`${__dirname}/${pcatPathCleaned}`, {encoding: 'utf8'})
 					.then(contents => {
 					const pobj = JSON.parse(contents);
 					pobjFormatted = JSON.stringify(pobj, null, 4);
@@ -357,17 +357,6 @@ ch.onMessageReceived = async function(channel, message) {
 					var userToGet = args;
 					var malObject = `https://nxmac.com/${userToGet}`
 					malReplaced = malObject.replace(/,/g, "-");
-					sendMsgWithChannel(channel, `${malReplaced}`)
-					};
-					break;
-			case "1337x":
-				if (!isUndefined(args)) {
-					String.prototype.replaceAt = function(index, replacement) {
-   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-				}
-					var userToGet = args;
-					var malObject = `https://www.1337x.to/search/${userToGet}/1/`
-					malReplaced = malObject.replace(/,/g, "+");
 					sendMsgWithChannel(channel, `${malReplaced}`)
 					};
 					break;
