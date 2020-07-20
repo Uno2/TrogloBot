@@ -1,5 +1,6 @@
 {
 
+ "rd": ["Gayest dude in this chat"],
  "echo": ["%(ALLARGS)"],
  "coffee": ["*%(SENDER) sipped a cup of hot coffee*"],
  "makenewb": ["%(ALLARGS) is now a noob"],
@@ -29,10 +30,8 @@
  "orbitalstrike": ["u/%(SENDER) has called an orbital strike on %(ALLARGS). A classified military satellite is sending kinetic bombs on them."],
  "weebs": ["Ew! u/%(SENDER) has caught weebs! They are %(ALLARGS)!"],
  "exterminate": ["https://ibb.co/7kwsfHD"],
- 
- 
- 
- 
+ "Chatsmoke": ["Poof! u/%(SENDER)vanished into thin air!"],
+ "chatsmoke": ["Poof! u/%(SENDER)vanished into thin air!"],
  
     
     
@@ -74,7 +73,7 @@
  "hitler": ["A NEW HITLER HAS ENTERED THE CHAT! IT'S %(SENDER)!"],
  "ghey": ["%(SENDER) thinks that was Gheyyy as fuck!"],
  "yeeeeeeet": ["YAAAAAA %(ALLARGS)"],
- "stare": ["%(SENDER) stares eerily at %(ALLARGS)"],
+ "stare": ["%(SENDER) stares motherfuckerly at  %(ALLARGS)"],
  "holdback": ["HOLD %(SENDER) BACK,HE GON' START A FIGHT!"],
  "rage": ["%(SENDER) IS IN A RAGE! RUN!"],
  "challenge": ["%(SENDER) challenges %(ALLARGS) to a duel!"],
@@ -109,6 +108,6 @@
  "rng": ["Your dice landed on a 1!","Your dice landed on a 2!","Your dice landed on a 3!","Your dice landed on a 4!","Your dice landed on a 5!","Your dice landed on a 6!"],
  "nice": ["Nice."],
  "whatislove": ["BABY DON' HURT ME,DON' HURT ME,NO MO'!"],
- "topic": ["baseball","camels","mules","cocoa","nurses","money","masonry","hockey","toads","balloons","barbers","pork","fortune tellers","diamond","lighters","police","apes","Native Americans","magicians","pipes","crime","water skiing","earthquake","foxes","dolphins","army","whales","smoking","zebras","Napoleon","Disney movies","cheese","gold","goats","Europe","pigeons","death","bakeries","oil","books","typewriters","breweries","sports","banking","medicine","bridges","seesaws","rice","newspapers","Americans","boats","seashells","athletics","pineapple","pottery","fishing","snakes","shells","socialism","coffee","chess","circus","postcards","typewriter","gypsies","shoes","rhinoceros","telephone","astronomy","frogs","journalism","zeppelins","crocodiles","dance","mummies","Olympic games","Boy Scouts","giants","elephants","motherhood","Africa","South America","cats","muppets","lighthouses","World War 1","hammocks","Red Cross","Salvation Army","marionettes","mountaineering","potatoes","rabbits","cows","windmills","tigers","amusement parks","milk","parachuting","bears","insects","cobblers","ostriches","laundry","sheep","submarines","beekeeping","caves","ferry boats","lions","carousels","cotton","motorcycles","bats","dogs","bohemians","criminals","accordions","pharmacy","cycling","justice","spiritism","shipping","birds","spinning","radio","sugar","radiology","bananas","coal","pipe organs","pilots","firemen","archery","vanilla","banana","meteorology","agriculture","prisons","stadiums","sharks","airports","jewelry","Central America","execution","playing cards","fencing","cactus","engineering","disasters","rugby","cigarettes","railroads","weaving","communism","politics","volcanoes","hotels","donkeys","drugstores","shovels","Asia","tanning","skull","skating","music","wrestling","basketball","gorillas","boxing","sailing","clowns","murderers","swings","canoes","cricket","gymnastics","tattoos","carpentry","diving","vaccines","salt","flood","hurricanes","printing","coffin","matches","x-rays","farmers markets","vegetables","puppets","monkeys","coins","shipwrecks","cards","movie theaters","artists","volleyball","funerals","pigs"],
+ "topic": ["baseball","camels","mules","cocoa","nurses","money","masonry","hockey","toads","balloons","barbers","pork","fortune tellers","diamond","lighters","police","apes","Native Americans","magicians","pipes","crime","water skiing","earthquake","foxes","dolphins","army","whales","smoking","zebras","Napoleon","Disney movies","cheese","gold","goats","Europe","pigeons","death","bakeries","oil","books","typewriters","breweries","sports","banking","medicine","bridges","seesaws","rice","newspapers","Americans","boats","seashells","athletics","pineapple","pottery","fishing","snakes","shells","socialism","coffee","chess","circus","postcards","typewriter","gypsies","shoes","rhinoceros","telephone","astronomy","frogs","journalism","zeppelins","crocodiles","dance","mummies","Olympic games","Boy Scouts","giants","elephants","motherhood","Africa","South America","cats","muppets","lighthouses","World War 1","hammocks","Red Cross","Salvation Army","marionettes","mountaineering","potatoes","rabbits","cows","windmills","tigers","amusement parks","milk","parachuting","bears","insects","cobblers","ostriches","laundry","sheep","submarines","beekeeping","caves","ferry boats","lions","carousels","cotton","motorcycles","bats","dogs","bohemians","criminals","accordions","pharmacy","cycling","justice","spiritism","shipping","birds","spinning","radio","sugar","radiology","bananas","coal","pipe organs","pilots","firemen","archery","vanilla","banana","meteorology","agriculture","prisons","stadiums","sharks","airports","jewelry","Central America","execution","playing cards","fencing","cactus","engineering","disasters","rugby","cigarettes","railroads","weaving","communism","politics","volcanoes","hotels","donkeys","drugstores","shovels","Asia","tanning","skull","skating","music","wrestling","basketball","gorillas","boxing","sailing","clowns","murderers","swings","canoes","cricket","gymnastics","tattoos","carpentry","diving","vaccines","salt","flood","hurricanes","printing","coffin","matches","x-rays","farmers markets","vegetables","puppets","monkeys","coins","shipwrecks","cards","movie theaters","artists","volleyball","funerals","pigs","Rd’s gayness","Rd’s gayness","Rd’s gayness","Rd’s gayness","Rd’s gayness"],
  "rules":["rules"]
 }

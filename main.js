@@ -7,11 +7,14 @@ const version = "version 1.0a";
 const moderators = ["TrogloBot", "TheDefault1"];
 const lrcst = require("lyricist")
 const FormData = require("form-data");
-const madAtAllTagging = ["Stawp", "No!", "Don't"];
+const madAtAllTagging = ["Stawp!", "No!", "Don't"];
+const {promisify} = require('util')
+const readFileAsync = promisify(fs.readFile)
 const {
 	CookieJar
 } = require("tough-cookie");
 const got = require("got");
+const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
 let credentials = {
 	userid: process.env.REDDIT_ID,
@@ -71,9 +74,7 @@ const lyricist = new lrcst(process.env.GENIUS_TOKEN);
 
 
 let chosenOnes = JSON.parse(fs.readFileSync("data/chosenOnes.json"));
-let rainelle = JSON.parse(fs.readFileSync("data/rainelle.json"));
-let thedefault1 = JSON.parse(fs.readFileSync("data/thedefault1.json"));
-let rose = JSON.parse(fs.readFileSync("data/rose.json"));
+let modlist = JSON.parse(fs.readFileSync("data/moderators.json"));
 
 let allYoMamaJokes = JSON.parse(fs.readFileSync("data/joe-mama.json"));
 let quotes = JSON.parse(fs.readFileSync("data/quotes.json"));
@@ -203,17 +204,14 @@ ch.onMessageReceived = async function(channel, message) {
 	if (messageText.toLowerCase().includes("not good bot")) {
 		sendMsgWithChannel(channel, "cryface")
 	}
-	if (messageText.toLowerCase().includes("goodn't bot")) {
-		sendMsgWithChannel(channel, "cryface")
-	}
 	if (messageText.toLowerCase().includes("asshole bot")) {
 		sendMsgWithChannel(channel, "i'm trying my best!")
 	}
 	if (messageText.toLowerCase().includes("retarded bot")) {
-		sendMsgWithChannel(channel, "noooo")
+		sendMsgWithChannel(channel, "i'm trying my best!")
 	}
 	if (messageText.toLowerCase().includes("retard bot")) {
-		sendMsgWithChannel(channel, "noooo")
+		sendMsgWithChannel(channel, "i'm trying my best!")
 	}
 
 	if (messageText.toLowerCase().includes("good bot")) {
@@ -225,22 +223,18 @@ ch.onMessageReceived = async function(channel, message) {
 	if (messageText.toLowerCase().includes("crap bot")) {
 		sendMsgWithChannel(channel, "no u")
 	}
-	if (messageText.toLowerCase().includes("scumbag bot")) {
-		sendMsgWithChannel(channel, "noooo")
-	}
-	if (messageText.toLowerCase().includes("bot is retarded")) {
-		sendMsgWithChannel(channel, "noooo")
-	}
+
 
 	if (messageText.toLowerCase().includes("cool bot")) {
 		sendMsgWithChannel(channel, "thanks!")
 	}
-	if (messageText.toLowerCase().includes("bot is cool")) {
-		sendMsgWithChannel(channel, "thanks!")
+	if (messageText.toLowerCase().includes("sup bot")) {
+		sendMsgWithChannel(channel, `Hey, u/${message._sender.nickname}. How can i help you?`)
 	}
-	if (messageText.toLowerCase().includes("bot is good")) {
-		sendMsgWithChannel(channel, "thanks!")
+	if (messageText.toLowerCase().includes("hey bot")) {
+			sendMsgWithChannel(channel, `Hey, u/${message._sender.nickname}. How can i help you?`)
 	}
+		
 
 	if (messageText.startsWith("/")) {
 		let cleanMessageText = messageText.toLowerCase().slice(1).trim();
@@ -327,7 +321,7 @@ ch.onMessageReceived = async function(channel, message) {
 				}
 				break;
 			case "rain":
-				if (!rainelle.includes(message._sender.nickname.toLowerCase())) {
+				if (!"rainelle95".includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You're not allowed to use this command.");
 				} else if (isUndefined(args[0])) {
 					sendMsgWithChannel(channel, "It is raining.");
@@ -336,7 +330,7 @@ ch.onMessageReceived = async function(channel, message) {
 				}
 				break;
 			case "kill":
-				if (!thedefault1.includes(message._sender.nickname.toLowerCase())) {
+				if (!"thedefault1".includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, `${message._sender.nickname}, that's impolite`);
 				} else if (isUndefined(args[0])) {
 					sendMsgWithChannel(channel, "You need to specify the victim.");
@@ -345,7 +339,7 @@ ch.onMessageReceived = async function(channel, message) {
 				}
 				break;
 			case "wither":
-				if (!rose.includes(message._sender.nickname.toLowerCase())) {
+				if (!"rosewrld".includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You don't have access to this command.");
 				} else {
 					sendMsgWithChannel(channel, "Rose is withering");
@@ -371,7 +365,7 @@ ch.onMessageReceived = async function(channel, message) {
 				if (!isUndefined(args)) {
 					String.prototype.replaceAt = function(index, replacement) {
    						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-}
+				}
 					var userToGet = args;
 					var malObject = `https://myanimelist.net/search/all?q=${userToGet}`
 					malReplaced = malObject.replace(/,/g, "%20");
@@ -380,6 +374,110 @@ ch.onMessageReceived = async function(channel, message) {
 				
 				
 				break;
+
+			case "cat":
+				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
+					catPath = `${stringFromList(args)}`
+					catPathFormatted = catPath.replace(/\s/g, '');
+					catPathCleaned = catPathFormatted.replace('..','safe');
+					readFileAsync(`/Users/tdo/Desktop/TrogloBot-master/${catPathCleaned}`, {encoding: 'utf8'})
+					.then(contents => {
+					const obj = JSON.parse(contents);
+					objFormatted = JSON.stringify(obj);
+					sendMsgWithChannel(channel, `${objFormatted}`)
+					})
+						.catch(error => {
+						throw error
+					})
+				}
+			
+			else {
+				sendMsgWithChannel(channel, "You do not have access to this command.");
+			}
+				break;
+			case "pcat":
+				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
+					pcatPath = `${stringFromList(args)}`
+					pcatPathFormatted = pcatPath.replace(/\s/g, '');
+					pcatPathCleaned = pcatPathFormatted.replace('..','safe');
+					readFileAsync(`/Users/tdo/Desktop/TrogloBot-master/${pcatPathCleaned}`, {encoding: 'utf8'})
+					.then(contents => {
+					const pobj = JSON.parse(contents);
+					pobjFormatted = JSON.stringify(pobj, null, 4);
+					sendMsgWithChannel(channel, `${pobjFormatted}`)
+					})
+						.catch(error => {
+						throw error
+					})
+				}
+			else {
+				sendMsgWithChannel(channel, "You do not have access to this command.");
+			}
+				break;
+
+			case "nxmac":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				}
+					var userToGet = args;
+					var malObject = `https://nxmac.com/${userToGet}`
+					malReplaced = malObject.replace(/,/g, "-");
+					sendMsgWithChannel(channel, `${malReplaced}`)
+					};
+					break;
+			case "1337x":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				}
+					var userToGet = args;
+					var malObject = `https://www.1337x.to/search/${userToGet}/1/`
+					malReplaced = malObject.replace(/,/g, "+");
+					sendMsgWithChannel(channel, `${malReplaced}`)
+					};
+					break;
+			case "search":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				}
+					var userToGet = args;
+					var malObject = `https://duckduckgo.com/?q=${userToGet}&t=hk&ia`
+					malReplaced = malObject.replace(/,/g, "+");
+					sendMsgWithChannel(channel, `${malReplaced}`)
+					};
+					break;
+			case "restart":
+				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
+					sendMsgWithChannel(channel, "Restarting...");
+					console.log("This is pid " + process.pid);
+					setTimeout(function () {
+    					process.on("exit", function () {
+        					require("child_process").spawn(process.argv.shift(), process.argv, {
+           					cwd: process.cwd(),
+            				detached : true,
+							stdio: "inherit"
+							
+						});
+						process.exit(1)
+   					});
+    			process.exit();
+				}, 5000);
+				}
+				else {
+					sendMsgWithChannel(channel, "You do not have access to this command.");
+				}
+				break;
+			case "shutdown":
+				if (modlist.includes(message._sender.nickname.toLowerCase())) {
+					process.exit(1)
+					break;
+				}
+				else {
+					sendMsgWithChannel(channel, "You do not have access to this command.");
+				}
+					break;
 			case "wyr":
 				sendMsgWithChannel(channel, await wouldYouRather());
 				break;

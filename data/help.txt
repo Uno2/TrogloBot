@@ -1,21 +1,38 @@
 List of commands:
+- /airstrike
+- /artillery
+- /beer
 - /coffee
+- /drone
 - /echo
-- /fuckyou
-- /makenewb
-- /prank 
-- /rd 
-- /slap 
-- /status 
-- /vodka 
-- /yeet 
-- /yes
+- /exterminate
+- /fyou
+- /github
+- /gn
 - /hornyjail
-- /
+- /kermitsuislide
+- /makenewb
+- /mal
+- /nuke
+- /orbitalstrike
+- /prank
+- /rd
+- /rip
+- /siski
+- /slap
+- /snowball
+- /status
+- /vodka
+- /weebs
+- /whothefuckasked
+- /yeet
+- /yes
 
 Exclusive commands:
 - /makegay
-- /shit.SPLITHERE
+- /rain
+- /shit
+- /wither SPLITHERE
 List of CPB commands:
 - /8ball
 - /amen
@@ -47,11 +64,11 @@ List of CPB commands:
 - /hitler
 - /holdback
 - /hug
-- /johnpissed
+- /johnpissed SPLITHERE
 - /kick
 - /kill
 - /kiss
-- /laugh.SPLITHERE
+- /laugh 
 - /lonely
 - /love
 - /naenae
@@ -78,7 +95,7 @@ List of CPB commands:
 - /stab
 - /stare
 - /surprise
-- /thirsty
+- /thirsty SPLITHERE
 - /throw
 - /tongue
 - /vibin
@@ -87,7 +104,7 @@ List of CPB commands:
 - /wheeze
 - /wryy
 - /yeeeeeeet
-- /zoink.SPLITHERE
+- /zoink
 - /ban
 - /botinfo
 - /catch
@@ -95,7 +112,7 @@ List of CPB commands:
 - /getlyrics
 - /gettitle
 - /gulag
-- /help
+- /help SPLITHERE
 - /moderators
 - /mods
 - /news
