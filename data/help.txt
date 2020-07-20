@@ -1,137 +1,167 @@
-List of commands:
-- /airstrike
-- /artillery
-- /beer
-- /coffee
-- /drone
-- /echo
-- /exterminate
-- /fyou
-- /github
-- /gn
-- /hornyjail
-- /kermitsuislide
-- /makenewb
-- /mal
-- /nuke
-- /orbitalstrike
-- /prank
-- /rd
-- /rip
-- /siski
-- /slap
-- /snowball
-- /status
-- /vodka
-- /weebs
-- /whothefuckasked
-- /yeet
-- /yes
+
+Utility commands:
+
+• /restart
+• /shutdown
+• /status
+• /github
+• /botinfo
+
+
+Slav•certified commands:
+
+• /vodka
+• /squat
+• /slav
+• /gulag
+• /ungulag
+
+
+F R E E D O M commands:
+
+• /airstrike
+• /artillery
+• /orbitalstrike
+• /nuke
+
+Moderation commands:
+
+• /rules
+• /setdescription
+• /setexitmessage
+• /setjoinmessage
+• /setrules
+• /mods
+• /ban
+• /unban
+@ /helpSPLITHERE
+
+Dope commands:
+
+• /echo
+• /urban
+• /spotify
+• /mal
+• /search
+• /nxmac
+
 
 Exclusive commands:
-- /makegay
-- /rain
-- /shit
-- /wither SPLITHERE
-List of CPB commands:
-- /8ball
-- /amen
-- /attacc 
-- /belch
-- /betrayed 
-- /blush
-- /challenge
-- /commie
-- /cough
-- /crabrave
-- /cricket
-- /cringe
-- /cry
-- /dab
-- /dance
-- /devitoapproves
-- /dropkick
-- /f
-- /fart
-- /fatality
-- /fbi
-- /feed
-- /gamemode
-- /gamerule
-- /ghey
-- /give
-- /high5
-- /hitler
-- /holdback
-- /hug
-- /johnpissed SPLITHERE
-- /kick
-- /kill
-- /kiss
-- /laugh 
-- /lonely
-- /love
-- /naenae
-- /nervous
-- /nice
-- /oink
-- /pat
-- /pout
-- /protecc
-- /psspss
-- /punch
-- /quickscope
-- /rage
-- /reee
-- /roast
-- /scared
-- /scoff
-- /scream
-- /shocked
-- /shrekapproves
-- /smack
-- /sneeze
-- /squat
-- /stab
-- /stare
-- /surprise
-- /thirsty SPLITHERE
-- /throw
-- /tongue
-- /vibin
-- /vsco
-- /whatislove
-- /wheeze
-- /wryy
-- /yeeeeeeet
-- /zoink
-- /ban
-- /botinfo
-- /catch
-- /getdescription
-- /getlyrics
-- /gettitle
-- /gulag
-- /help SPLITHERE
-- /moderators
-- /mods
-- /news
-- /pfp
-- /rng
-- /rules
-- /setdescription
-- /setexitmessage
-- /setjoinmessage
-- /setrules
-- /stats
-- /tanswer
-- /trivia
-- /trustfall
-- /unban
-- /ungulag
-- /urban
-- /wyr
-- /yomama
 
-A bot forked off of u/aWildGeodudeAppeared's ChatPlaceBot.
-version: 1.0
+🔐 /makegay 
+🔐 /makenewb   
+🔐 /rain      
+🔐 /shit      
+🔐 /wither
+
+
+Other commands:   
+
+• /hornyjail
+• /kermitsuislide
+• /prank
+• /weeb  &  /weebsSPLITHERE
+
+Boring commands 1/4:
+
+• /8ball
+• /amen
+• /attacc
+• /beer
+• /belch
+• /betrayed
+• /blush
+• /catch
+• /challenge
+• /coffee
+• /commie
+• /cough
+• /crabrave
+• /cricket
+• /cringe
+• /cry
+• /dab
+• /dance
+• /devitoapproves
+• /dropkickSPLITHERE
+
+Boring commands 2/4:
+• /exterminate
+• /f
+• /fart
+• /fatality
+• /fbi
+• /feed
+• /fyou
+• /gamemode
+• /gamerule
+• /getdescription
+• /getlyrics
+• /gettitle
+• /ghey
+• /give
+• /gn
+• /high5
+• /hitler
+• /holdback
+• /hug
+• /johnpissed
+• /kick
+• /kill
+• /kissSPLITHERE
+
+Boring commands 3/4:
+• /laugh
+• /lonely
+• /love
+• /naenae
+• /nervous
+• /news
+• /nice
+• /no
+• /oink
+• /pat
+• /pfp
+• /pout
+• /protecc
+• /psspss
+• /punch
+• /quickscope
+• /rage
+• /rd
+• /reee
+• /rip
+• /rng
+• /roastSPLITHERE
+
+Boring commands 4/4:
+• /scared
+• /scoff
+• /scream
+• /shocked
+• /shrekapproves
+• /slap
+• /smack
+• /sneeze
+• /snowball
+• /stab
+• /stare
+• /surprise
+• /tanswer
+• /thirsty
+• /throw
+• /tongue
+• /trivia
+• /trustfall
+• /vibin
+• /vsco
+• /whatislove
+• /wheeze
+• /whothefuckasked
+• /wryy
+• /wyr
+• /yeeeeeeet
+• /yeet
+• /yes
+• /yomama
+• /zoink

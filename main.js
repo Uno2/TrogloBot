@@ -149,16 +149,67 @@ ch.onMessageReceived = async function(channel, message) {
 	let messageText = message.message.replace(/[^\r\n\t\x20-\x7E\xA0-\xFF]/g, " ").trim();
 	if (messageText.toLowerCase().includes("@all")) {
 		sendMsgWithChannel(channel, madAtAllTagging[Math.floor(Math.random() * madAtAllTagging.length)]);
-	
+	}
+	if (messageText.toLowerCase().includes("stupid bot")) {
+		sendMsgWithChannel(channel, "no u.")
+	}
+	if (messageText.toLowerCase().includes("stupid troglo")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("stupid cavebot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("gey bot")) {
+		sendMsgWithChannel(channel, "you're even more gey")
+	}
+	if (messageText.toLowerCase().includes("gay bot")) {
+		sendMsgWithChannel(channel, "you're even more gey")
+	}
+	if (messageText.toLowerCase().includes("bot gey")) {
+		sendMsgWithChannel(channel, "you're even more gey")
+	}
+	if (messageText.toLowerCase().includes("bot gay")) {
+		sendMsgWithChannel(channel, "you're even more gay")
+	}
+	if (messageText.toLowerCase().includes("shitty bot")) {
+		sendMsgWithChannel(channel, "u even shittier")
+	}
+	if (messageText.toLowerCase().includes("shitty troglo ")) {
+		sendMsgWithChannel(channel, "u even shittier")
+	}
+	if (messageText.toLowerCase().includes("dumbass bot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("bot is shit")) {
+		sendMsgWithChannel(channel, "u even shittier")
+	}
 	if (messageText.toLowerCase().includes("bad bot")) {
-		sendMsgWithChannel(channel, "cryface")
+		sendMsgWithChannel(channel, "nuuuuuh")
 	}
 	if (messageText.toLowerCase().includes("not good bot")) {
-		sendMsgWithChannel(channel, "cryface")
+		sendMsgWithChannel(channel, "nuuuuuh")
 	}
+	if (messageText.toLowerCase().includes("asshole bot")) {
+		sendMsgWithChannel(channel, "i'm trying my best!")
+	}
+	if (messageText.toLowerCase().includes("retarded bot")) {
+		sendMsgWithChannel(channel, "i'm trying my best!")
+	}
+	if (messageText.toLowerCase().includes("retard bot")) {
+		sendMsgWithChannel(channel, "i'm trying my best!")
+	}
+
 	if (messageText.toLowerCase().includes("good bot")) {
 		sendMsgWithChannel(channel, "thanks!")
 	}
+	if (messageText.toLowerCase().includes("shit bot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+	if (messageText.toLowerCase().includes("crap bot")) {
+		sendMsgWithChannel(channel, "no u")
+	}
+
+
 	if (messageText.toLowerCase().includes("cool bot")) {
 		sendMsgWithChannel(channel, "thanks!")
 	}
@@ -314,7 +365,7 @@ ch.onMessageReceived = async function(channel, message) {
 					catPath = `${stringFromList(args)}`
 					catPathFormatted = catPath.replace(/\s/g, '');
 					catPathCleaned = catPathFormatted.replace('..','safe');
-					readFileAsync(`${__dirname}/${catPathCleaned}`, {encoding: 'utf8'})
+					readFileAsync(`${catPathCleaned}`, {encoding: 'utf8'})
 					.then(contents => {
 					const obj = JSON.parse(contents);
 					objFormatted = JSON.stringify(obj);
@@ -334,7 +385,7 @@ ch.onMessageReceived = async function(channel, message) {
 					pcatPath = `${stringFromList(args)}`
 					pcatPathFormatted = pcatPath.replace(/\s/g, '');
 					pcatPathCleaned = pcatPathFormatted.replace('..','safe');
-					readFileAsync(`${__dirname}/${pcatPathCleaned}`, {encoding: 'utf8'})
+					readFileAsync(`${pcatPathCleaned}`, {encoding: 'utf8'})
 					.then(contents => {
 					const pobj = JSON.parse(contents);
 					pobjFormatted = JSON.stringify(pobj, null, 4);
@@ -373,7 +424,7 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "restart":
 				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
-					sendMsgWithChannel(channel, "Restarting...\n pid: " + process.pid);
+					sendMsgWithChannel(channel, "Restarting...\n Process ID: " + process.pid);
 					console.log("This is pid " + process.pid);
 					setTimeout(function () {
     					process.on("exit", function () {
@@ -394,13 +445,31 @@ ch.onMessageReceived = async function(channel, message) {
 				break;
 			case "shutdown":
 				if (modlist.includes(message._sender.nickname.toLowerCase())) {
-					process.exit(1)
+					sendMsgWithChannel(channel, "Shutting down...");
+					setTimeout(() => {  process.exit(1) }, 1500);
 					break;
 				}
 				else {
 					sendMsgWithChannel(channel, "You do not have access to this command.");
 				}
 					break;
+			case "uptime":
+				var uptime = Math.floor(process.uptime());
+				sendMsgWithChannel(channel, `I've been running for ${uptime} seconds so far.`);
+				break;
+			case "spotify":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				}
+					var userToGet = args;
+					var malObject = `https://open.spotify.com/search/${userToGet}`
+					malReplaced = malObject.replace(/,/g, "%20");
+					sendMsgWithChannel(channel, `${malReplaced}`)
+					};
+				
+				
+				break;
 			case "wyr":
 				sendMsgWithChannel(channel, await wouldYouRather());
 				break;
@@ -436,7 +505,6 @@ ch.onMessageReceived = async function(channel, message) {
 				});
 				break;
 			case "moderators":
-			case "gays":
 			case "mods":
 				let operatorListQuery = channel.createOperatorListQuery();
 				operatorListQuery.limit = 100;
@@ -646,7 +714,7 @@ ch.onMessageReceived = async function(channel, message) {
 				break;
 			case "botinfo":
 				var uptime = Math.floor(process.uptime());
-				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL + `\n sysinfo: ` +  version + ` | arch: ${process.arch} | pid: ${process.pid} | uptime: ${uptime}s`);
+				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL +  version + `. I'm currently running on an ${os.arch} based device with ${os.platform}. My current process ID is ${process.pid} `);
 				break;
 			case "commands":
 			case "help":
@@ -802,6 +870,7 @@ ch.onMessageReceived = async function(channel, message) {
 				currentTrustfaller[channel.url].catched = true;
 				break;
 			case "man":
+			case "dissect":
 				if (isUndefined(args[0])) {
 					sendMsgWithChannel(channel, "null")
 				} else {
