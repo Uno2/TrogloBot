@@ -149,82 +149,16 @@ ch.onMessageReceived = async function(channel, message) {
 	let messageText = message.message.replace(/[^\r\n\t\x20-\x7E\xA0-\xFF]/g, " ").trim();
 	if (messageText.toLowerCase().includes("@all")) {
 		sendMsgWithChannel(channel, madAtAllTagging[Math.floor(Math.random() * madAtAllTagging.length)]);
-	}
-	if (messageText.toLowerCase().includes("fucking bot")) {
-		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
-	}
-	if (messageText.toLowerCase().includes("fucking troglo")) {
-		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
-	}
-	if (messageText.toLowerCase().includes("stupid bot")) {
-		sendMsgWithChannel(channel, "no u.")
-	}
-	if (messageText.toLowerCase().includes("stupid troglo")) {
-		sendMsgWithChannel(channel, "no u")
-	}
-	if (messageText.toLowerCase().includes("gey bot")) {
-		sendMsgWithChannel(channel, "you're even more gey")
-	}
-	if (messageText.toLowerCase().includes("gay bot")) {
-		sendMsgWithChannel(channel, "you're even more gey")
-	}
-	if (messageText.toLowerCase().includes("bot gey")) {
-		sendMsgWithChannel(channel, "you're even more gey")
-	}
-	if (messageText.toLowerCase().includes("bot gay")) {
-		sendMsgWithChannel(channel, "you're even more gay")
-	}
-	if (messageText.toLowerCase().includes("shitty bot")) {
-		sendMsgWithChannel(channel, "u even shittier")
-	}
-	if (messageText.toLowerCase().includes("shitty troglo ")) {
-		sendMsgWithChannel(channel, "u even shittier")
-	}
-	if (messageText.toLowerCase().includes("fucking bot ")) {
-		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
-	}
-	if (messageText.toLowerCase().includes("fucking troglo")) {
-		sendMsgWithChannel(channel, "stawp it i'm a good bot!")
-	}
-	if (messageText.toLowerCase().includes("dumbass bot")) {
-		sendMsgWithChannel(channel, "no u")
-	}
-	if (messageText.toLowerCase().includes("bot is shit")) {
-		sendMsgWithChannel(channel, "u even shittier")
-	}
-	if (messageText.toLowerCase().includes("bot is a shitbag")) {
-		sendMsgWithChannel(channel, "human meat is gay bacon. fuck you.")
-	}
-	if (messageText.toLowerCase().includes("shitbag bot")) {
-		sendMsgWithChannel(channel, "human meat is gay bacon. fuck you.")
-	}
+	
 	if (messageText.toLowerCase().includes("bad bot")) {
 		sendMsgWithChannel(channel, "cryface")
 	}
 	if (messageText.toLowerCase().includes("not good bot")) {
 		sendMsgWithChannel(channel, "cryface")
 	}
-	if (messageText.toLowerCase().includes("asshole bot")) {
-		sendMsgWithChannel(channel, "i'm trying my best!")
-	}
-	if (messageText.toLowerCase().includes("retarded bot")) {
-		sendMsgWithChannel(channel, "i'm trying my best!")
-	}
-	if (messageText.toLowerCase().includes("retard bot")) {
-		sendMsgWithChannel(channel, "i'm trying my best!")
-	}
-
 	if (messageText.toLowerCase().includes("good bot")) {
 		sendMsgWithChannel(channel, "thanks!")
 	}
-	if (messageText.toLowerCase().includes("shit bot")) {
-		sendMsgWithChannel(channel, "no u")
-	}
-	if (messageText.toLowerCase().includes("crap bot")) {
-		sendMsgWithChannel(channel, "no u")
-	}
-
-
 	if (messageText.toLowerCase().includes("cool bot")) {
 		sendMsgWithChannel(channel, "thanks!")
 	}
