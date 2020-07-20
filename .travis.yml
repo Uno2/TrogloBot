@@ -1,3 +1,9 @@
 language: node_js
 node_js:
  - "node"
+install:
+  - sudo npm install -g
+script: 
+  - node main.js
+after_success:
+  - codecov
