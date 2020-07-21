@@ -3,24 +3,25 @@ const sendbird = require('sendbird');
 const os = require('os');
 const fs = require('fs');
 const axios = require('axios');
+const lrcst = require("lyricist");
+const FormData = require("form-data");
+const {promisify} = require('util');
+const readFileAsync = promisify(fs.readFile);
+const madAtAllTagging = ["Nuuuuu!", "No!", "Don't!"];
 const version = "version 1.1a";
 const moderators = ["TrogloBot", "TheDefault1"];
-const lrcst = require("lyricist")
-const FormData = require("form-data");
-const madAtAllTagging = ["Stawp!", "No!", "Don't"];
-const {promisify} = require('util')
-const readFileAsync = promisify(fs.readFile)
 const {
 	CookieJar
 } = require("tough-cookie");
 const got = require("got");
 const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
+// Launch
 let credentials = {
 	userid: process.env.REDDIT_ID,
 	username: process.env.REDDIT_USER,
 	passwd: process.env.REDDIT_PASS,
-}
+};
 let sb = new sendbird({
 	appId: "2515BDA8-9D3A-47CF-9325-330BC37ADA13"
 });
@@ -68,11 +69,11 @@ lrcst._request = async function(path) {
 	if (result.meta.status !== 200)
 		throw new Error(`${result.meta.status}: ${result.meta.message}`);
 	return result.response;
-}
+};
 const lyricist = new lrcst(process.env.GENIUS_TOKEN);
 
 
-
+// Data
 let chosenOnes = JSON.parse(fs.readFileSync("data/chosenOnes.json"));
 let modlist = JSON.parse(fs.readFileSync("data/moderators.json"));
 
@@ -82,12 +83,9 @@ let rules = JSON.parse(fs.readFileSync("data/rules.json"));
 let miscCommands = JSON.parse(fs.readFileSync("src/MiscCommands.json"));
 var helpMessages = fs.readFileSync("data/help.txt", encoding = "utf8").split("SPLITHERE");
 let welcomeMessages = JSON.parse(fs.readFileSync("data/welcomeMessages.json"));
-let exitMessages = JSON.parse(fs.readFileSync("data/exitMessages.json"))
-
+let exitMessages = JSON.parse(fs.readFileSync("data/exitMessages.json"));
 let newsMessageMessage = "TOP NEWS MESSAGE OF THE DAY: " + os.EOL + "Post Title: %(NEWSMESSAGETITLE)" + os.EOL + "Post Content: %(NEWSMESSAGELINK)" + os.EOL + "Link To Post: %(NEWSMESSAGELINKTOPOST)";
-
 let ch = new sb.ChannelHandler();
-
 let newsMessage = async (count, channelUrl, channel) => {
 	if (isUndefined(channelUrl)) {
 		let channelListQuery = sb.GroupChannel.createMyGroupChannelListQuery();
@@ -103,7 +101,7 @@ let newsMessage = async (count, channelUrl, channel) => {
 				axios.get("http://www.reddit.com/r/news/top.json?limit=" + count.toString()).then((newsPostJson) => {
 					let newsPost = newsPostJson.data.data.children[Math.floor(Math.random() * newsPostJson.data.data.children.length)].data;
 					newMessage = makerandomthing(7) + newsMessageMessage;
-					let newMessage = newsMessageMessage.replace("%(NEWSMESSAGETITLE)", newsPost.title);
+					var newMessage = newsMessageMessage.replace("%(NEWSMESSAGETITLE)", newsPost.title);
 					newMessage = newMessage.replace("%(NEWSMESSAGELINK)", newsPost.url);
 					newMessage = newMessage.replace("%(NEWSMESSAGELINKTOPOST)", "https://reddit.com" + newsPost.permalink);
 					newMessage = newMessage + makerandomthing(7);
@@ -125,10 +123,94 @@ let newsMessage = async (count, channelUrl, channel) => {
 			let newMessage = newsMessageMessage.replace("%(NEWSMESSAGETITLE)", newsPost.title);
 			newMessage = newMessage.replace("%(NEWSMESSAGELINK)", newsPost.url);
 			newMessage = newMessage.replace("%(NEWSMESSAGELINKTOPOST)", "https://reddit.com" + newsPost.permalink);
-			sendMsgWithChannel(channel, newMessage)
+			sendMsgWithChannel(channel, newMessage);
 		});
 	}
-}
+};
+let memesMessageMessage = "Top meme of the day: " + os.EOL + os.EOL + "Title: \"%(MEMESMESSAGETITLE)\"" + os.EOL+ "Post: %(MEMESMESSAGELINKTOPOST)";
+let memesMessage = async (count, channelUrl, channel) => {
+	if (isUndefined(channelUrl)) {
+		let channelListQuery = sb.GroupChannel.createMyGroupChannelListQuery();
+		channelListQuery.includeEmpty = false;
+		channelListQuery.limit = 100;
+
+		if (channelListQuery.hasNext) {
+			channelListQuery.next(function(channelList, error) {
+				if (error) {
+					console.error(error);
+					return;
+				}
+				axios.get("http://www.reddit.com/r/dankmemes/top.json?limit=" + count.toString()).then((memesPostJson) => {
+					let memesPost = memesPostJson.data.data.children[Math.floor(Math.random() * memesPostJson.data.data.children.length)].data;
+					newMessage = makerandomthing(7) + memesMessageMessage;
+					var newMessage = memesMessageMessage.replace("%(MEMESMESSAGETITLE)", memesPost.title);
+					newMessage = newMessage.replace("%(MEMESMESSAGELINK)", memesPost.url);
+					newMessage = newMessage.replace("%(MEMESMESSAGELINKTOPOST)", "https://reddit.com" + memesPost.permalink);
+					newMessage = newMessage + makerandomthing(7);
+					for (let i = 0; i < channelList.length; i++) {
+						setTimeout(() => {
+							channelList[i].sendUserMessage(newMessage, (message, error) => {
+								if (error) {
+									console.error(error);
+								}
+							});
+						}, i * 1000);
+					}
+				});
+			});
+		}
+	} else {
+		axios.get("http://www.reddit.com/r/dankmemes/top.json?limit=" + count.toString()).then((memesPostJson) => {
+			let memesPost = memesPostJson.data.data.children[Math.floor(Math.random() * memesPostJson.data.data.children.length)].data;
+			let newMessage = memesMessageMessage.replace("%(MEMESMESSAGETITLE)", memesPost.title);
+			newMessage = newMessage.replace("%(MEMESMESSAGELINK)", memesPost.url);
+			newMessage = newMessage.replace("%(MEMESMESSAGELINKTOPOST)", "https://reddit.com" + memesPost.permalink);
+			sendMsgWithChannel(channel, newMessage);
+		});
+	}
+};
+let caveMessageMessage = "Top cave post of the day: " + os.EOL + os.EOL + "Title: \"%(CAVEMESSAGETITLE)\"" + os.EOL+ "Post: %(CAVEMESSAGELINKTOPOST)";
+let caveMessage = async (count, channelUrl, channel) => {
+	if (isUndefined(channelUrl)) {
+		let channelListQuery = sb.GroupChannel.createMyGroupChannelListQuery();
+		channelListQuery.includeEmpty = false;
+		channelListQuery.limit = 100;
+
+		if (channelListQuery.hasNext) {
+			channelListQuery.next(function(channelList, error) {
+				if (error) {
+					console.error(error);
+					return;
+				}
+				axios.get("http://www.reddit.com/r/chatcave/top.json?limit=" + count.toString()).then((cavePostJson) => {
+					let cavePost = cavePostJson.data.data.children[Math.floor(Math.random() * cavePostJson.data.data.children.length)].data;
+					newMessage = makerandomthing(7) + caveMessageMessage;
+					var newMessage = caveMessageMessage.replace("%(CAVEMESSAGETITLE)", cavePost.title);
+					newMessage = newMessage.replace("%(CAVEMESSAGELINK)", cavePost.url);
+					newMessage = newMessage.replace("%(CAVESMESSAGELINKTOPOST)", "https://reddit.com" + cavePost.permalink);
+					newMessage = newMessage + makerandomthing(7);
+					for (let i = 0; i < channelList.length; i++) {
+						setTimeout(() => {
+							channelList[i].sendUserMessage(newMessage, (message, error) => {
+								if (error) {
+									console.error(error);
+								}
+							});
+						}, i * 1000);
+					}
+				});
+			});
+		}
+	} else {
+		axios.get("http://www.reddit.com/r/chatcave/top.json?limit=" + count.toString()).then((cavePostJson) => {
+			let cavePost = cavePostJson.data.data.children[Math.floor(Math.random() * cavePostJson.data.data.children.length)].data;
+			let newMessage = caveMessageMessage.replace("%(CAVEMESSAGETITLE)", cavePost.title);
+			newMessage = newMessage.replace("%(CAVEMESSAGELINK)", cavePost.url);
+			newMessage = newMessage.replace("%(CAVEMESSAGELINKTOPOST)", "https://reddit.com" + cavePost.permalink);
+			sendMsgWithChannel(channel, newMessage);
+		});
+	}
+};
 let currentAnswer = {};
 let timeOfSendingOfLastTrivia = {};
 let currentTrustfaller = {};
@@ -137,12 +219,12 @@ ch.onUserJoined = async function(channel, user) {
 	if (!isUndefined(welcomeMessages[channel.url])) {
 		sendMsgWithChannel(channel, welcomeMessages[channel.url].replace(/%USERNAME%/g, user.nickname));
 	}
-}
+};
 ch.onUserLeft = async function(channel, user) {
 	if (!isUndefined(exitMessages[channel.url])) {
 		sendMsgWithChannel(channel, exitMessages[channel.url].replace(/%USERNAME%/g, user.nickname));
 	}
-}
+};
 ch.onUserEntered = ch.onUserJoined;
 ch.onUserExited = ch.onUserLeft;
 ch.onMessageReceived = async function(channel, message) {
@@ -151,73 +233,73 @@ ch.onMessageReceived = async function(channel, message) {
 		sendMsgWithChannel(channel, madAtAllTagging[Math.floor(Math.random() * madAtAllTagging.length)]);
 	}
 	if (messageText.toLowerCase().includes("stupid bot")) {
-		sendMsgWithChannel(channel, "no u.")
+		sendMsgWithChannel(channel, "no u.");
 	}
 	if (messageText.toLowerCase().includes("stupid troglo")) {
-		sendMsgWithChannel(channel, "no u")
+		sendMsgWithChannel(channel, "no u");
 	}
 	if (messageText.toLowerCase().includes("stupid cavebot")) {
-		sendMsgWithChannel(channel, "no u")
+		sendMsgWithChannel(channel, "no u");
 	}
 	if (messageText.toLowerCase().includes("gey bot")) {
-		sendMsgWithChannel(channel, "you're even more gey")
+		sendMsgWithChannel(channel, "you're even more gey");
 	}
 	if (messageText.toLowerCase().includes("gay bot")) {
-		sendMsgWithChannel(channel, "you're even more gey")
+		sendMsgWithChannel(channel, "you're even more gey");
 	}
 	if (messageText.toLowerCase().includes("bot gey")) {
-		sendMsgWithChannel(channel, "you're even more gey")
+		sendMsgWithChannel(channel, "you're even more gey");
 	}
 	if (messageText.toLowerCase().includes("bot gay")) {
-		sendMsgWithChannel(channel, "you're even more gay")
+		sendMsgWithChannel(channel, "you're even more gay");
 	}
 	if (messageText.toLowerCase().includes("shitty bot")) {
-		sendMsgWithChannel(channel, "u even shittier")
+		sendMsgWithChannel(channel, "u even shittier");
 	}
 	if (messageText.toLowerCase().includes("shitty troglo ")) {
-		sendMsgWithChannel(channel, "u even shittier")
+		sendMsgWithChannel(channel, "u even shittier");
 	}
 	if (messageText.toLowerCase().includes("dumbass bot")) {
-		sendMsgWithChannel(channel, "no u")
+		sendMsgWithChannel(channel, "no u");
 	}
 	if (messageText.toLowerCase().includes("bot is shit")) {
-		sendMsgWithChannel(channel, "u even shittier")
+		sendMsgWithChannel(channel, "u even shittier");
 	}
 	if (messageText.toLowerCase().includes("bad bot")) {
-		sendMsgWithChannel(channel, "nuuuuuh")
+		sendMsgWithChannel(channel, "nuuuuuh");
 	}
 	if (messageText.toLowerCase().includes("not good bot")) {
-		sendMsgWithChannel(channel, "nuuuuuh")
+		sendMsgWithChannel(channel, "nuuuuuh");
 	}
 	if (messageText.toLowerCase().includes("asshole bot")) {
-		sendMsgWithChannel(channel, "i'm trying my best!")
+		sendMsgWithChannel(channel, "i'm trying my best!");
 	}
 	if (messageText.toLowerCase().includes("retarded bot")) {
-		sendMsgWithChannel(channel, "i'm trying my best!")
+		sendMsgWithChannel(channel, "i'm trying my best!");
 	}
 	if (messageText.toLowerCase().includes("retard bot")) {
-		sendMsgWithChannel(channel, "i'm trying my best!")
+		sendMsgWithChannel(channel, "i'm trying my best!");
 	}
 
 	if (messageText.toLowerCase().includes("good bot")) {
-		sendMsgWithChannel(channel, "thanks!")
+		sendMsgWithChannel(channel, "thanks!");
 	}
 	if (messageText.toLowerCase().includes("shit bot")) {
-		sendMsgWithChannel(channel, "no u")
+		sendMsgWithChannel(channel, "no u");
 	}
 	if (messageText.toLowerCase().includes("crap bot")) {
-		sendMsgWithChannel(channel, "no u")
+		sendMsgWithChannel(channel, "no u");
 	}
 
 
 	if (messageText.toLowerCase().includes("cool bot")) {
-		sendMsgWithChannel(channel, "thanks!")
+		sendMsgWithChannel(channel, "thanks!");
 	}
 	if (messageText.toLowerCase().includes("sup bot")) {
-		sendMsgWithChannel(channel, `Hey, u/${message._sender.nickname}. How can i help you?`)
+		sendMsgWithChannel(channel, `Hey, u/${message._sender.nickname}. How can i help you?`);
 	}
 	if (messageText.toLowerCase().includes("hey bot")) {
-			sendMsgWithChannel(channel, `Hey, u/${message._sender.nickname}. How can i help you?`)
+			sendMsgWithChannel(channel, `Hey, u/${message._sender.nickname}. How can i help you?`);
 	}
 		
 
@@ -343,21 +425,19 @@ ch.onMessageReceived = async function(channel, message) {
 						sendMsgWithChannel(channel, isUndefined(result.data.error) ? `${userToGet}'s ID is: \n${result.data.data.id.split("?")[0]}` : `This isn't a real person!`);
 					});
 				} else {
-					sendMsgWithChannel(channel, `Your ID is: ${message._sender.userId}`)
+					sendMsgWithChannel(channel, `Your ID is: ${message._sender.userId}`);
 				}
 				break;
 			case "mal":
 				if (!isUndefined(args)) {
 					String.prototype.replaceAt = function(index, replacement) {
    						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-				}
+				};
 					var userToGet = args;
 					var malObject = `https://myanimelist.net/search/all?q=${userToGet}`
 					malReplaced = malObject.replace(/,/g, "%20");
-					sendMsgWithChannel(channel, `${malReplaced}`)
-					};
-				
-				
+					sendMsgWithChannel(channel, `${malReplaced}`);
+					}
 				break;
 
 			case "cat":
@@ -467,8 +547,10 @@ ch.onMessageReceived = async function(channel, message) {
 					malReplaced = malObject.replace(/,/g, "%20");
 					sendMsgWithChannel(channel, `${malReplaced}`)
 					};
-				
-				
+			
+				break;
+			case "recite":
+				sendMsgWithChannel(channel, `${stringFromList(args).toUpperCase()}`)
 				break;
 			case "wyr":
 				sendMsgWithChannel(channel, await wouldYouRather());
@@ -703,6 +785,12 @@ ch.onMessageReceived = async function(channel, message) {
 			case "news":
 				newsMessage(20, channel.url, channel);
 				break;
+			case "memes":
+				memesMessage(20, channel.url, channel);
+				break;
+			case "caveposts":
+				caveMessage(20, channel.url, channel);
+				break;
 			case "trivia":
 				trivia(channel.url, channel);
 				break;
@@ -714,7 +802,7 @@ ch.onMessageReceived = async function(channel, message) {
 				break;
 			case "botinfo":
 				var uptime = Math.floor(process.uptime());
-				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL +  version + `. I'm currently running on an ${os.arch} based device with ${os.platform}. My current process ID is ${process.pid} `);
+				sendMsgWithChannel(channel, "A bot by u/TheDefault1. Forked from u/aWildGeodudeAppeared's ChatPlaceBot" + os.EOL + os.EOL +  version + `. Currently running on an ${os.arch} based device with ${os.type}. `);
 				break;
 			case "commands":
 			case "help":
@@ -882,11 +970,11 @@ ch.onMessageReceived = async function(channel, message) {
 					} else {
 						sendMsgWithChannel(channel, "This command doesn't seem to have a definition.");
 					}
-				}
+				};
 				break;
 			case "rng":
 				if (Math.random() < 0.001) {
-					sendMsgWithChannel(channel, "Your dice never landed.")
+					sendMsgWithChannel(channel, "Your dice never landed.");
 					var eamsg = `SOMEONE FOUND THE EASTER EGG! IT WAS ${message._sender.nickname} IN ${channel.name}!`;
 					for (var i = 0; i < 10; i++) {
 						console.log(eamsg);
@@ -910,7 +998,7 @@ ch.onMessageReceived = async function(channel, message) {
 					returning = returning.replace("%(ALLARGSAFTER1)", allArgsFromOneString);
 					returning = returning.replace("%(ALLARGSAFTER1)", allArgsFromTwoString);
 					returning = returning.replace("%(SENDER)", message._sender.nickname);
-					sendMsgWithChannel(channel, returning)
+					sendMsgWithChannel(channel, returning);
 				}
 				break;
 		}
@@ -925,12 +1013,10 @@ function looksLikeACommand(textToCheck) {
 		case "?":
 		case "&":
 			return true;
-			break;
 		default:
 			return false;
-			break;
 	}
-}
+};
 
 function wouldYouRather() {
 	return axios.get(`https://www.rrrather.com/botapi`).then((result) => {
@@ -969,10 +1055,10 @@ async function getDescription(nick, callback) {
 		if (isUndefined(descriptions[nick])) {
 			callback("This person doesn't have a description.", false)
 			return;
-		}
+		};
 		callback(descriptions[nick], true)
 	});
-}
+};
 
 async function setDescription(nick, newDescription) {
 	fs.readFile("data/descriptions.json", (err, data) => {
@@ -990,10 +1076,10 @@ async function getTitle(nick, callback) {
 	fs.readFile("data/titles.json", (err, data) => {
 		let currentTitles = JSON.parse(data);
 		if (isUndefined(currentTitles[nick])) {
-			callback("This person doesn't have a title.")
+			callback("This person doesn't have a title.");
 			return;
 		}
-		callback(currentTitles[nick].t)
+		callback(currentTitles[nick].t);
 	});
 }
 
@@ -1003,7 +1089,7 @@ async function setTitle(nick, newTitle) {
 		if (isUndefined(currentTitles[nick])) {
 			currentTitles[nick] = {
 				t: newTitle
-			}
+			};
 		} else {
 			currentTitles[nick].t = newTitle;
 		}
@@ -1167,6 +1253,8 @@ function sort(obj) {
 sb.addChannelHandler("vsdfh64mc93mg0cn367vne4m50bn3b238", ch);
 let messageInterval = setInterval(function() {
 	newsMessage(1);
+	memesMessage(1);
+	caveMessage(1);
 }, 1000 * 60 * 60 * 24);
 
 function exitHandler(exit) {

@@ -34,16 +34,17 @@ Moderation commands:
 • /mods
 • /ban
 • /unban
-@ /helpSPLITHERE
+• /helpSPLITHERE
 
 Dope commands:
 
-• /echo
 • /urban
 • /spotify
 • /mal
 • /search
 • /nxmac
+• /memes
+• /caveposts
 
 
 Exclusive commands:
@@ -57,6 +58,8 @@ Exclusive commands:
 
 Other commands:   
 
+• /echo
+• /recite
 • /hornyjail
 • /kermitsuislide
 • /prank
