@@ -127,7 +127,7 @@ let newsMessage = async (count, channelUrl, channel) => {
 		});
 	}
 };
-let memesMessageMessage = "Top meme of the day: " + os.EOL + os.EOL + "Title: \"%(MEMESMESSAGETITLE)\"" + os.EOL+ "Post: %(MEMESMESSAGELINKTOPOST)";
+let memesMessageMessage = "%(MEMESMESSAGELINKTOPOST)";
 let memesMessage = async (count, channelUrl, channel) => {
 	if (isUndefined(channelUrl)) {
 		let channelListQuery = sb.GroupChannel.createMyGroupChannelListQuery();
@@ -169,7 +169,7 @@ let memesMessage = async (count, channelUrl, channel) => {
 		});
 	}
 };
-let caveMessageMessage = "Top cave post of the day: " + os.EOL + os.EOL + "Title: \"%(CAVEMESSAGETITLE)\"" + os.EOL+ "Post: %(CAVEMESSAGELINKTOPOST)";
+let caveMessageMessage = "%(CAVEMESSAGELINKTOPOST)";
 let caveMessage = async (count, channelUrl, channel) => {
 	if (isUndefined(channelUrl)) {
 		let channelListQuery = sb.GroupChannel.createMyGroupChannelListQuery();
@@ -398,15 +398,15 @@ ch.onMessageReceived = async function(channel, message) {
 				break;
 			case "kill":
 				if (!"thedefault1".includes(message._sender.nickname.toLowerCase())) {
-					sendMsgWithChannel(channel, `${message._sender.nickname}, that's impolite`);
+					sendMsgWithChannel(channel, `u/${message._sender.nickname}, that's impolite`);
 				} else if (isUndefined(args[0])) {
 					sendMsgWithChannel(channel, "You need to specify the victim.");
 				} else {
-					sendMsgWithChannel(channel, `${message._sender.nickname} killed ${stringFromList(args)}!`);
+					sendMsgWithChannel(channel, `u/${message._sender.nickname} has killed ${stringFromList(args)}!`);
 				}
 				break;
 			case "wither":
-				if (!"rosewrld".includes(message._sender.nickname.toLowerCase())) {
+				if (!chosenOnes.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You don't have access to this command.");
 				} else {
 					sendMsgWithChannel(channel, "Rose is withering");
@@ -504,7 +504,7 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "restart":
 				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
-					sendMsgWithChannel(channel, "Restarting...\n Process ID: " + process.pid);
+					sendMsgWithChannel(channel, "Restarting...\n \nProcess ID: " + process.pid);
 					console.log("This is pid " + process.pid);
 					setTimeout(function () {
     					process.on("exit", function () {
@@ -535,7 +535,8 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "uptime":
 				var uptime = Math.floor(process.uptime());
-				sendMsgWithChannel(channel, `I've been running for ${uptime} seconds so far.`);
+				var uptimeMins = uptime / 60;
+				sendMsgWithChannel(channel, `I've been running for ${uptimeMins} minutes so far.`);
 				break;
 			case "spotify":
 				if (!isUndefined(args)) {

@@ -15,7 +15,7 @@
  "fyou": ["https://ibb.co/pQsg3kG"],
  "hornyjail": ["u/%(SENDER) sent %(ALLARGS) to the horny jail!"],
  "github": ["You can get my source code here https://github.com/TheDefault1/TrogloBot."],
- "gn": ["Sleep tight, %(ALLARGS)"],
+ "gn": ["%(SENDER) tucked %(ALLARGS) in, and gave them a goodnight kiss"],
  "slav": ["https://ibb.co/SxgPb96", "https://ibb.co/HPDq9jt", "https://ibb.co/kGTZ2NG", "https://ibb.co/jkpt2mN", "https://ibb.co/5sq4Dpq", "https://ibb.co/hKLpQbW", "https://ibb.co/bQrMMkc", "https://ibb.co/5BpVCZ2", "https://ibb.co/WcPW2fT"],
  "kermitsuislide": ["Weeeeee u/%(SENDER) does the toaster bath swim!"],
  "snowball": ["Ouch! u/%(SENDER) threw a snowball at %(ALLARGS)!"],
