@@ -343,13 +343,10 @@ ch.onMessageReceived = async function(channel, message) {
 			case "addquote":
 				if (args.length > 0) {
 					var quoteToAdd = stringFromList(args).trim();
-					if (new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?").test(quoteToAdd)) {
-						sendMsgWithChannel(channel, "No URL's allowed. Sorry.");
-					} else {
 						quotes.push(quoteToAdd);
 						sendMsgWithChannel(channel, "Quote added.");
 					}
-				} else {
+				else {
 					sendMsgWithChannel(channel, "You have to define the quote!");
 				}
 				break;
@@ -535,8 +532,27 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "uptime":
 				var uptime = Math.floor(process.uptime());
-				var uptimeMins = uptime / 60;
-				sendMsgWithChannel(channel, `I've been running for ${uptimeMins} minutes so far.`);
+				if ((uptime >= 60 && uptime < 120)) {
+					var uptimeStr = "minute";
+					var uptimeFloored = Math.round(uptime / 60);
+				}
+				if ((uptime >= 120 && uptime < 3600)) {
+					var uptimeStr = "minutes";
+					var uptimeFloored = Math.round(uptime / 60);
+				}
+				else if ((uptime >= 3600 && uptime < 7200)) {
+					var uptimeStr = "hour";
+					var uptimeFloored = Math.round(uptime / 3600);
+				}
+				else if(uptime >= 7200) {
+					var uptimeStr = "hours";
+					var uptimeFloored = Math.round(uptime / 3600);
+				}
+				else {
+					var uptimeStr = "seconds";
+					var uptimeFloored = Math.round(uptime);
+				}
+				sendMsgWithChannel(channel, `I've been running for ${uptimeFloored} ${uptimeStr} so far.`);
 				break;
 			case "spotify":
 				if (!isUndefined(args)) {
@@ -552,6 +568,35 @@ ch.onMessageReceived = async function(channel, message) {
 				break;
 			case "recite":
 				sendMsgWithChannel(channel, `${stringFromList(args).toUpperCase()}`)
+				break;
+			case "allquotes":
+			case "quoteall":
+				quotePath = `data/quotes.json`
+				readFileAsync(`${quotePath}`, {encoding: 'utf8'})
+				.then(contents => {
+				const qobj = JSON.parse(contents);
+				qobjFormatted = JSON.stringify(qobj, null, 12);
+				qobjCleaned1 = qobjFormatted.replace(/\[/g, '');
+				qobjCleaned2 = qobjCleaned1.replace(/\]/g, '');
+				qobjCleaned3 = qobjCleaned2.replace(/\\n/g, ' ');
+				qobjCleaned3 = qobjCleaned2.replace(/\\n/g, ' ');
+				qobjCleaned4 = qobjCleaned3.replace(/\\/g, '');
+
+				sendMsgWithChannel(channel, `List of all quotes: \n${qobjCleaned4}`)
+				})
+					.catch(error => {
+					throw error
+				})
+				break;
+			case "tempf":
+				var tempInput = Number(stringFromList(args));
+				tempConverted = (tempInput * 1.8) + 32;
+				sendMsgWithChannel(channel, `${stringFromList(args)} Celcius converted to Fahrenheit is ${tempConverted.toFixed(2)}.`);
+				break;
+			case "tempc":
+				var tempInput = Number(stringFromList(args));
+				tempConverted = (tempInput - 32) / 1.8;
+				sendMsgWithChannel(channel, `${stringFromList(args)} Fahrenheit converted to Celcius is ${tempConverted.toFixed(2)}.`);
 				break;
 			case "wyr":
 				sendMsgWithChannel(channel, await wouldYouRather());
