@@ -540,6 +540,7 @@ ch.onMessageReceived = async function(channel, message) {
 					var uptimeStr = "minutes";
 					var uptimeFloored = Math.round(uptime / 60);
 				}
+				else if ((uptime > 3600 && uptime < 4800)) {
 					var uptimeStr = "hour";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
