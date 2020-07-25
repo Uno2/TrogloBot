@@ -8,7 +8,7 @@ const FormData = require("form-data");
 const {promisify} = require('util');
 const readFileAsync = promisify(fs.readFile);
 const madAtAllTagging = ["Nuuuuu!", "No!", "Don't!"];
-const version = "version 1.1a";
+const version = "version 1.2a";
 const moderators = ["TrogloBot", "TheDefault1"];
 const {
 	CookieJar
@@ -532,19 +532,19 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "uptime":
 				var uptime = Math.floor(process.uptime());
-				if ((uptime >= 60 && uptime < 120)) {
+				if ((uptime > 60 && uptime < 120)) {
 					var uptimeStr = "minute";
 					var uptimeFloored = Math.round(uptime / 60);
 				}
-				if ((uptime >= 120 && uptime < 3600)) {
+				if ((uptime > 120 && uptime < 3600)) {
 					var uptimeStr = "minutes";
 					var uptimeFloored = Math.round(uptime / 60);
 				}
-				else if ((uptime >= 3600 && uptime < 7200)) {
+				else if ((uptime > 3600 && uptime < 7200)) {
 					var uptimeStr = "hour";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
-				else if(uptime >= 7200) {
+				else if(uptime > 7200) {
 					var uptimeStr = "hours";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
@@ -577,6 +577,29 @@ ch.onMessageReceived = async function(channel, message) {
 					sendMsgWithChannel(channel, `${malReplaced}`);
 					}
 				break;
+			case "reddit":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				};
+					var userToGet = args[0].split(0);
+					var userToGet2 = args[1].split(1);
+					var malObject = `https://www.reddit.com/r/${userToGet}/search?q=${userToGet2}&restrict_sr=1`
+					malReplaced = malObject.replace(/,/g, "%20");
+					sendMsgWithChannel(channel, `${malReplaced}`);
+					}
+				break;
+			case "youtube":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				};
+					var userToGet = args;
+					var malObject = `https://www.youtube.com/results?search_query=${userToGet}`
+					malReplaced = malObject.replace(/,/g, "+");
+					sendMsgWithChannel(channel, `${malReplaced}`);
+					}
+				break;
 			case "recite":
 				sendMsgWithChannel(channel, `${stringFromList(args).toUpperCase()}`)
 				break;
@@ -599,15 +622,25 @@ ch.onMessageReceived = async function(channel, message) {
 					throw error
 				})
 				break;
-			case "tempf":
-				var tempInput = Number(stringFromList(args));
-				tempConverted = (tempInput * 1.8) + 32;
-				sendMsgWithChannel(channel, `${stringFromList(args)} Celcius converted to Fahrenheit is ${tempConverted.toFixed(2)}.`);
-				break;
-			case "tempc":
-				var tempInput = Number(stringFromList(args));
-				tempConverted = (tempInput - 32) / 1.8;
-				sendMsgWithChannel(channel, `${stringFromList(args)} Fahrenheit converted to Celcius is ${tempConverted.toFixed(2)}.`);
+			case "temp":
+				var userToGet = stringFromList(args);
+				
+				if (userToGet.includes("C")) {
+					let tempFormatted = userToGet.replace('C','');
+					let tempInput = Number(tempFormatted)
+					tempConverted = (tempInput * 1.8) + 32;
+					sendMsgWithChannel(channel, `${tempFormatted} Celsius converted to Fahrenheit is ${tempConverted.toFixed(1)}.`);
+				}
+				else if (userToGet.includes("F")) {
+					let tempFormatted = userToGet.replace('F','');
+					
+					let tempInput = Number(tempFormatted)
+					tempConverted = (tempInput - 32) / 1.8;
+					sendMsgWithChannel(channel, `${tempFormatted} Fahrenheit converted to Celsius is ${tempConverted.toFixed(1)}.`);
+				}
+				else {
+					sendMsgWithChannel(channel, "Invalid argument")
+				}
 				break;
 			case "wyr":
 				sendMsgWithChannel(channel, await wouldYouRather());
