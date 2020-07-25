@@ -534,19 +534,19 @@ ch.onMessageReceived = async function(channel, message) {
 				var uptime = Math.floor(process.uptime());
 				if ((uptime > 60 && uptime < 120)) {
 					var uptimeStr = "minute";
-					var uptimeFloored = Math.round(uptime / 60);
+					var uptimeFloored = Math.truncate(uptime / 60);
 				}
 				if ((uptime > 120 && uptime < 3600)) {
 					var uptimeStr = "minutes";
-					var uptimeFloored = Math.round(uptime / 60);
+					var uptimeFloored = Math.truncate(uptime / 60);
 				}
-				else if ((uptime > 3600 && uptime < 4800)) {
+				else if ((uptime > 3600 && uptime < 7200)) {
 					var uptimeStr = "hour";
-					var uptimeFloored = Math.round(uptime / 3600);
+					var uptimeFloored = Math.truncate(uptime / 3600);
 				}
-				else if(uptime > 4800) {
+				else if(uptime > 7200) {
 					var uptimeStr = "hours";
-					var uptimeFloored = Math.round(uptime / 3600);
+					var uptimeFloored = Math.truncate(uptime / 3600);
 				}
 				else {
 					var uptimeStr = "seconds";
