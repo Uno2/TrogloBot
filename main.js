@@ -566,6 +566,17 @@ ch.onMessageReceived = async function(channel, message) {
 					};
 			
 				break;
+			case "imdb":
+				if (!isUndefined(args)) {
+					String.prototype.replaceAt = function(index, replacement) {
+   						return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+				};
+					var userToGet = args;
+					var malObject = `https://www.imdb.com/find?q=${userToGet}&ref_=nv_sr_sm`
+					malReplaced = malObject.replace(/,/g, "+");
+					sendMsgWithChannel(channel, `${malReplaced}`);
+					}
+				break;
 			case "recite":
 				sendMsgWithChannel(channel, `${stringFromList(args).toUpperCase()}`)
 				break;

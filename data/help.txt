@@ -41,6 +41,7 @@ Dope commands:
 
 • /urban
 • /spotify
+• /imdb
 • /mal
 • /search
 • /nxmac
@@ -65,6 +66,7 @@ Other commands:
 • /chatsmoke
 • /kermitsuislide
 • /prank
+• /tempc  &  /tempf
 • /weeb  &  /weebsSPLITHERE
 
 Boring commands 1/4:
