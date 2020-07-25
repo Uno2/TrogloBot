@@ -540,11 +540,10 @@ ch.onMessageReceived = async function(channel, message) {
 					var uptimeStr = "minutes";
 					var uptimeFloored = Math.round(uptime / 60);
 				}
-				else if ((uptime > 3600 && uptime < 7200)) {
 					var uptimeStr = "hour";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
-				else if(uptime > 7200) {
+				else if(uptime > 4800) {
 					var uptimeStr = "hours";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
@@ -901,7 +900,7 @@ ch.onMessageReceived = async function(channel, message) {
 					sendMsgWithChannel(channel, `This isn't a valid number. The pages range from 1 to ${helpMessages.length}`);
 					break;
 				}
-				sendMsgWithChannel(channel, `Page #${pageNumber}:\n${helpMessages[pageNumber - 1]}`);
+				sendMsgWithChannel(channel, `Page ${pageNumber}/${helpMessages.length}:\n${helpMessages[pageNumber - 1]}`);
 				break;
 	
 			case "titleset":

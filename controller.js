@@ -133,19 +133,19 @@ ch.onMessageReceived = async function(channel, message) {
 					break;
 			case "uptime":
 				var uptime = Math.floor(process.uptime());
-				if ((uptime >= 60 && uptime < 120)) {
+				if ((uptime > 60 && uptime < 120)) {
 					var uptimeStr = "minute";
 					var uptimeFloored = Math.round(uptime / 60);
 				}
-				if ((uptime >= 120 && uptime < 3600)) {
+				if ((uptime > 120 && uptime < 3600)) {
 					var uptimeStr = "minutes";
 					var uptimeFloored = Math.round(uptime / 60);
 				}
-				else if ((uptime >= 3600 && uptime < 7200)) {
+				else if ((uptime > 3600 && uptime < 4800)) {
 					var uptimeStr = "hour";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
-				else if(uptime >= 7200) {
+				else if(uptime > 4800) {
 					var uptimeStr = "hours";
 					var uptimeFloored = Math.round(uptime / 3600);
 				}
@@ -153,7 +153,7 @@ ch.onMessageReceived = async function(channel, message) {
 					var uptimeStr = "seconds";
 					var uptimeFloored = Math.round(uptime);
 				}
-				sendMsgWithChannel(channel, `I\'ve been running for ${uptimeFloored} ${uptimeStr} so far.`);
+				sendMsgWithChannel(channel, `I've been running for ${uptimeFloored} ${uptimeStr} so far.`);
 				break;
 			case "botinfo":
 				var uptime = Math.floor(process.uptime());
