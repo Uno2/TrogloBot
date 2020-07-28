@@ -175,22 +175,6 @@ ch.onMessageReceived = async function(channel, message) {
 				});
 			}
 			break;
-			case "launch":
-				if (modlist.includes(message._sender.nickname.toLowerCase())) {
-					sendMsgWithChannel(channel, "Launching TrogloBot...");
-					exec(`${stringFromList(args)}`, (error, stdout, stderr) => {
-						if (error) {
-							console.log(`error: ${error.message}`);
-							return;
-						}
-						if (stderr) {
-							console.log(`stderr: ${stderr}`);
-							return;
-						}
-						sendMsgWithChannel(channel, `stdout: ${stdout}`);
-				});
-			}
-			break;	
 		}
 	}
 }
