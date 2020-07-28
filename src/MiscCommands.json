@@ -3,7 +3,6 @@
  "rd": ["g a e"],
  "echo": ["%(ALLARGS)"],
  "coffee": ["u/%(SENDER) sipped a cup of hot coffee."],
- "makenewb": ["%(ALLARGS) is now a noob."],
  "slap": ["u/%(SENDER) slapped the crap outta %(ALLARGS)!"],
  "vodka": ["u/%(SENDER) grabbed a bottle of vodka."],
  "beer": ["u/%(SENDER) grabbed a bottle of beer."],
