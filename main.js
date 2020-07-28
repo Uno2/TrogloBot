@@ -235,12 +235,7 @@ ch.onMessageReceived = async function(channel, message) {
 	if (messageText.toLowerCase().includes("stupid bot")) {
 		sendMsgWithChannel(channel, "no u.");
 	}
-	if (messageText.toLowerCase().includes("stupid troglo")) {
-		sendMsgWithChannel(channel, "no u");
-	}
-	if (messageText.toLowerCase().includes("stupid cavebot")) {
-		sendMsgWithChannel(channel, "no u");
-	}
+	
 	if (messageText.toLowerCase().includes("gey bot")) {
 		sendMsgWithChannel(channel, "you're even more gey");
 	}
@@ -254,9 +249,6 @@ ch.onMessageReceived = async function(channel, message) {
 		sendMsgWithChannel(channel, "you're even more gay");
 	}
 	if (messageText.toLowerCase().includes("shitty bot")) {
-		sendMsgWithChannel(channel, "u even shittier");
-	}
-	if (messageText.toLowerCase().includes("shitty troglo ")) {
 		sendMsgWithChannel(channel, "u even shittier");
 	}
 	if (messageText.toLowerCase().includes("dumbass bot")) {
@@ -290,8 +282,6 @@ ch.onMessageReceived = async function(channel, message) {
 	if (messageText.toLowerCase().includes("crap bot")) {
 		sendMsgWithChannel(channel, "no u");
 	}
-
-
 	if (messageText.toLowerCase().includes("cool bot")) {
 		sendMsgWithChannel(channel, "thanks!");
 	}
@@ -366,15 +356,15 @@ ch.onMessageReceived = async function(channel, message) {
 				});
 				break;
 
-			case "shit":
-				if (!chosenOnes.includes(message._sender.nickname.toLowerCase())) {
-					sendMsgWithChannel(channel, "You're not allowed to use this command.");
-				} else if (isUndefined(args[0])) {
-					sendMsgWithChannel(channel, "You need to specify the victim.");
-				} else {
-					sendMsgWithChannel(channel, `${message._sender.nickname} shat on ${stringFromList(args)}!`);
-				}
-				break;
+// 			case "shit":
+// 				if (!chosenOnes.includes(message._sender.nickname.toLowerCase())) {
+// 					sendMsgWithChannel(channel, "You're not allowed to use this command.");
+// 				} else if (isUndefined(args[0])) {
+// 					sendMsgWithChannel(channel, "You need to specify the victim.");
+// 				} else {
+// 					sendMsgWithChannel(channel, `${message._sender.nickname} shat on ${stringFromList(args)}!`);
+// 				}
+// 				break;
 			case "makegay":
 				if (!chosenOnes.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "You're not allowed to use this command.");
@@ -394,7 +384,7 @@ ch.onMessageReceived = async function(channel, message) {
 				}
 				break;
 			case "kill":
-				if (!"thedefault1".includes(message._sender.nickname.toLowerCase())) {
+				if (!chosenOnes.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, `u/${message._sender.nickname}, that's impolite`);
 				} else if (isUndefined(args[0])) {
 					sendMsgWithChannel(channel, "You need to specify the victim.");
