@@ -101,7 +101,7 @@ ch.onMessageReceived = async function(channel, message) {
 				}
 				break;
 			case "restart":
-				if ("thedefault1".includes(message._sender.nickname.toLowerCase())) {
+				if (modlist.includes(message._sender.nickname.toLowerCase())) {
 					sendMsgWithChannel(channel, "Restarting...\n \nProcess ID: " + process.pid);
 					console.log("This is pid " + process.pid);
 					setTimeout(function () {
@@ -141,12 +141,8 @@ ch.onMessageReceived = async function(channel, message) {
 					var uptimeStr = "minutes";
 					var uptimeFloored = Math.truncate(uptime / 60);
 				}
-				else if ((uptime > 3600 && uptime < 7200)) {
-					var uptimeStr = "hour";
-					var uptimeFloored = Math.truncate(uptime / 3600);
-				}
-				else if(uptime > 7200) {
-					var uptimeStr = "hours";
+				else if(uptime > 3600) {
+					var uptimeStr = "hours(s)";
 					var uptimeFloored = Math.truncate(uptime / 3600);
 				}
 				else {
